@@ -25,7 +25,7 @@ async function fetchMetadata(urls) {
                 return {
                     title: xss(metadata.title) || 'No title available',
                     description: xss(metadata.description) || 'No description available',
-                    image: xss(metadata.image) || null,
+                    image: xss(metadata.image) || 'No image available',
                     url
                 };
             } catch (err) {
