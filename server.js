@@ -2,14 +2,19 @@ import http from 'http'
 import path from 'path'
 import cors from 'cors'
 import express from 'express'
+import rateLimit from 'express-rate-limit'
 
 const app = express()
 const server = http.createServer(app)
 
-// Express App Config
-app.use(express.json())
-// app.use(express.json({limit: '50mb'}))
+const limiter = rateLimit({
+    windowMs: 1000, // 1 second window
+    max: 5, // Limit each IP to 5 requests per windowMs
+    message: 'Too many requests, please try again later.',
+})
 
+app.use(express.json())
+app.use(limiter)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve('public')))

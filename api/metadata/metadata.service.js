@@ -26,6 +26,7 @@ async function fetchMetadata(urls) {
                     title: xss(metadata.title) || 'No title available',
                     description: xss(metadata.description) || 'No description available',
                     image: xss(metadata.image) || null,
+                    url
                 };
             } catch (err) {
                 logger.error(`Error fetching metadata for URL ${url}`, err)
