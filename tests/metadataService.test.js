@@ -21,7 +21,7 @@ test('fetchMetadata returns correct metadata for a valid URL', async () => {
 
 //Test Handling of Invalid URL
 test('fetchMetadata returns error metadata for an invalid URL', async () => {
-    const urls = ['https://invalid-url.com'];
+    const urls = ['https://invalid-url.com']
 
     axios.get.mockRejectedValue(new Error('Network Error'))
 
