@@ -30,7 +30,12 @@ async function fetchMetadata(urls) {
                 }
             } catch (err) {
                 logger.error(`Error fetching metadata for URL ${url}`, err)
-                return { title: 'Error fetching metadata', description: 'Error fetching metadata', image: null }
+                return {
+                    title: 'Error fetching metadata',
+                    description: 'Error fetching metadata',
+                    image: null,
+                    url
+                }
             }
         }))
 
