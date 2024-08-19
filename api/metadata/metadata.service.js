@@ -27,17 +27,17 @@ async function fetchMetadata(urls) {
                     description: xss(metadata.description) || 'No description available',
                     image: xss(metadata.image) || null,
                     url
-                };
+                }
             } catch (err) {
                 logger.error(`Error fetching metadata for URL ${url}`, err)
-                return { title: 'Error fetching metadata', description: '', image: null }
+                return { title: 'Error fetching metadata', description: 'Error fetching metadata', image: null }
             }
         }))
 
-        return metadata;
+        return metadata
     } catch (err) {
-        logger.error('Cannot get metadata', err);
-        throw err;
+        logger.error('Cannot get metadata', err)
+        throw err
     }
 }
 
